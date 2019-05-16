@@ -1,3 +1,8 @@
+##############################################
+# from https://github.com/codebasics/py/tree/master/pandas/2_dataframe_basics
+# from https://github.com/codebasics/py/tree/master/pandas/1_intro
+##############################################
+
 import pandas as pd
 
 df1 = pd.read_csv('nyc_weather.csv')
