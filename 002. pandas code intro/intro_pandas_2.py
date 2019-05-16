@@ -54,6 +54,7 @@ df1_sorted = df1.sort_values(['Birth'],ascending=False)
 # print(df1['Birth'].max())
 
 df1['Birth'].plot()
+
 maxValue = df1['Birth'].max()
 maxName = df1['Names'][df1['Birth'] == df1['Birth'].max()].values
 print(maxName)
@@ -64,6 +65,7 @@ print(Text)
 
 ### start to add text to graph
 plt.annotate(Text,xy=(1,maxValue), xytext=(8,0), xycoords=('axes fraction', 'data'), textcoords='offset points')
+plt.show()
 print("\nThe most popular name: ")
 print(df1[df1['Birth']==df1['Birth'].max()])
 
