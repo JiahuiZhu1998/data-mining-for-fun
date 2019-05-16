@@ -19,7 +19,7 @@ births = [968, 155, 77, 578, 973]
 BabyDataSet = list(zip(names,births))
 #print(BabyDataSet)
 df1 = DataFrame(data = BabyDataSet, columns=['Names','Birth'])
-#print(df1)
+print(df1)
 
 ### use to_csv built-in function to change dataframe into csv file
 ### AND save targeted csv file into designated folder location
@@ -64,6 +64,7 @@ Text = str(maxValue) + '-' + maxName
 print(Text)
 
 ### start to add text to graph
+#annotate function 给予注解于图
 plt.annotate(Text,xy=(1,maxValue), xytext=(8,0), xycoords=('axes fraction', 'data'), textcoords='offset points')
 plt.show()
 print("\nThe most popular name: ")
