@@ -43,10 +43,12 @@ for index, row in dataset.iterrows():
 
 ### we set min_samples_split and min_samples_leaf to pruning the decision tree
 ### the way to create decision tree is use Gini impurity and information gain
-    clf = DecisionTreeClassifier(random_State=14)
-    X_previouswins = dataset[['HomeLastWin', 'VisitorLastWin']].value
-    scores = cross_val_score(clf, X_previouswins, y_true, scoring='accuracy')
-    print('Accuracy:{9:.1f}%'.format(np.mean(scores)*100))
+clf = DecisionTreeClassifier()
+X_previouswins = dataset[['HomeLastWin', 'VisitorLastWin']].values
+scores = cross_val_score(clf, X_previouswins, y_true, scoring='accuracy')
+print("Accuracy:{:.1f}%".format(np.mean(scores)*100) )
+
+
 
 
 
