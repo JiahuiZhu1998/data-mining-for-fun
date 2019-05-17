@@ -1,8 +1,9 @@
 ##############################################
 # from https://github.com/codebasics/py/tree/master/pandas/2_dataframe_basics
 # from https://github.com/codebasics/py/tree/master/pandas/1_intro
+# from https://blog.csdn.net/qq_30982323/article/details/82813990
 ##############################################
-#
+# 1) add df.set_value, know how to use defaultdict know how to use df.iterrows()
 
 import pandas as pd
 
