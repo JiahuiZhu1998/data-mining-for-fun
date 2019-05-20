@@ -4,6 +4,10 @@
 # from https://blog.csdn.net/qq_30982323/article/details/82813990
 ##############################################
 # 1) add df.set_value, know how to use defaultdict know how to use df.iterrows()
+# 2） pandas iat[]
+# originally DataFrame.set_value(index, col, value, takeable=False)
+# 3) pandas df.loc
+# from https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.get_dummies.html
 
 import pandas as pd
 
