@@ -6,7 +6,7 @@
 # predict the winner of NBA champion                #
 # DATE: 5/19/2019                                   #
 #####################################################
-
+## from https://blog.csdn.net/qq_30982323/article/details/82813990
 import pandas as pd
 import numpy as np
 import sys
@@ -40,7 +40,7 @@ for index, row in dataset.iterrows():
 ### the way to create decision tree is use Gini impurity and information gain
 clf = DecisionTreeClassifier()
 X_previouswins = dataset[['HomeLastWin', 'VisitorLastWin']].values
-scores = cross_val_score(clf, X_previouswins, y_true, scoring='accuracy')
+scores = cross_val_score(clf, X_previouswins, y_true, scoring='accuracy',cv=3)
 print("Accuracy:{:.1f}%".format(np.mean(scores)*100) )
 
 standings = pd.read_csv('C:/Users/garry/Documents/data-mining-for-fun/Project  NBA Winner Prediction/standings.csv',delimiter=',',encoding='utf-8-sig')
@@ -54,7 +54,7 @@ for index,row in dataset.iterrows():
 X_homehigher = dataset[["HomeTeamRanksHigher", "HomeLastWin", "VisitorLastWin", ]].values
 
 clf = DecisionTreeClassifier()
-scores = cross_val_score(clf, X_homehigher, y_true, scoring='accuracy')
+scores = cross_val_score(clf, X_homehigher, y_true, scoring='accuracy',cv=3)
 print("Accuracy: {0:.1f}%".format(np.mean(scores) * 100))
 
 last_match_winner = defaultdict(int)
@@ -71,7 +71,7 @@ for index,row in dataset.iterrows():
 
 X_lastwinner = dataset[['HomeTeamWonLast','HomeTEamRanksHigher','HomeLastWin','VisitorLastWin']].values
 clf = DecisionTreeClassifier(criterion='entropy')
-scores = cross_val_score(clf,X_lastwinner,y_true,scoring='accuracy')
+scores = cross_val_score(clf,X_lastwinner,y_true,scoring='accuracy',cv=3)
 print('Accuracy:{0:.1f}%'.format(np.mean(scores)*100))
 
 ###
@@ -85,9 +85,9 @@ X_teams = np.vstack([home_teams,visitor_teams]).T
 
 
 from sklearn.preprocessing import OneHotEncoder
-onehot = OneHotEncoder()
+onehot = OneHotEncoder(categories='auto')
 X_teams = onehot.fit_transform(X_teams).todense()
 
 clf=DecisionTreeClassifier()
-scores = cross_val_score(clf,X_teams,y_true,scoring='accuracy')
+scores = cross_val_score(clf,X_teams,y_true,scoring='accuracy',cv=3)
 print('Accuracy:{0:.1f}%'.format(np.mean(scores)*100))

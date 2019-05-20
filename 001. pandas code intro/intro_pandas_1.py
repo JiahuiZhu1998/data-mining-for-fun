@@ -8,6 +8,9 @@
 # originally DataFrame.set_value(index, col, value, takeable=False)
 # 3) pandas df.loc
 # from https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.get_dummies.html
+# cross_val_score usage
+# from https://www.cnblogs.com/zhaoxy/p/5054938.html
+
 
 import pandas as pd
 
