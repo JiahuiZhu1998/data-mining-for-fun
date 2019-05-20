@@ -55,7 +55,7 @@ X_homehigher = dataset[["HomeTeamRanksHigher", "HomeLastWin", "VisitorLastWin", 
 
 clf = DecisionTreeClassifier()
 scores = cross_val_score(clf, X_homehigher, y_true, scoring='accuracy',cv=3)
-print("Accuracy: {0:.1f}%".format(np.mean(scores) * 100))
+print("Accuracy:{0:.1f}%".format(np.mean(scores) * 100))
 
 last_match_winner = defaultdict(int)
 dataset['HomeTeamWonLast']= 0
