@@ -211,4 +211,79 @@ plt.show()
 # plt.imshow(np.unit8(img_tinted))
 # plt.show()
 
+### creating a 7*4 array
+arr1 = np.arange(28).reshape((7,4))
+print(arr1)
+print('\n')
+booling1 = np.array([True,False,False,True,True,False,False])
+print(arr1[booling1])## the first row, the fourth row , the fifth row
+
+#another example
+names = np.array(['Ben','Tom','Ben','Jeremy','Jason','Michael','Ben'])
+print('\n')
+print(names=='Ben')
+print('\n')
+print(arr1[names=='Ben'])
+print('\n')
+print(arr1[names =='Ben',3]) #which the column index is 3 so the answer is [3 11 27]
+print('\n')
+print(arr1[names=='Ben',1:4]) # which the column index is 1:4 so the answer is [1 2 3] [9 10 11] [25 26 27]
+print('\n')
+print(arr1[names!='Ben'])# showing rows which does not contain ben
+print('\n')
+print(arr1[~(names=='Ben')]) # also showing rows which does not contain ben
+print('\n')
+print(arr1[(names=='Jason')|(names=='Tom')]) #showing rows which contain jason or contain tom
+print('\n')
+arr1[(names=='Jason')|(names=='Tom')]=0; ## clear rows which contain jason or contain tom
+print(arr1)
+print('\n')
+print(arr1[arr1>15]) ## pick up all elements which is bigger than 15 and group them to become a new array
+print('\n')
+arr1[arr1<=15]=0;
+print(arr1)
+print('\n') ## replace all elements by 0 which is smaller than or equal to 15
+print()
+
+###### new chapter: Fancy Indexing花式索引
+arr2 = np.array(['zero','one','two','three','four'])
+print(arr2[[1,4]])## print the second element and the fifth element
+arr3 = np.empty((8,4),dtype=np.int)
+for i in range(8):
+    arr3[i]=i;
+print(arr3)## fill different number in each row because arr3[i] i represent row and neglect column index
+print('\n')
+print(arr3[[4,3,0,6]])
+print('\n')
+print(arr3[[-3,-5,-7]])##negtive index
+
+arr4 = np.arange(42).reshape(6,7)
+print('\n')
+print(arr4)
+print('\n')
+print(arr4[[1,3,5],[2,4,6]])#### [1,3,5] represents row and [2,4,6] represents column
+# so the result is [9 25 41]
+
+### relationship between boolean indexing and fancy indexing
+arr5 = np.arange(12).reshape(3,4)
+i = np.array([True,False,True])
+j = np.array([True,True,False,False])
+print('\n')
+print(i.nonzero()) ## which is the first element and the third element which is array[0,2]
+print('\n')
+print(arr5[i])
+print('\n')
+print(arr5[i.nonzero()]) ## because i only show true and the first row and the third row is true which is 1. so the nonzero is the same meaning of i
+print('\n')
+
+print(i)
+print('\n')
+print(j)
+print('\n')
+print(i.nonzero())
+print(j.nonzero())
+#### these three lines above
+print(arr5[i,j])
+print(arr5[i.nonzero(),j.nonzero()])
+print(arr5[[0,2],[0,1]]) ## the element (1,1) and(2,2) are 0 and 9 and these two elements consist a new list or an array
 
