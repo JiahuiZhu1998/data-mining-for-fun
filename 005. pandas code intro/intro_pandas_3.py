@@ -1,5 +1,7 @@
 #from https://nbviewer.jupyter.org/urls/bitbucket.org/hrojas/learn-pandas/raw/master/lessons/02%20-%20Lesson.ipynb
-
+#python 3.7
+#5/20/2019
+#Jiahui Zhu
 import pandas as pd
 from numpy import random
 import matplotlib.pyplot as plt
