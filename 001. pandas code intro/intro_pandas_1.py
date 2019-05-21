@@ -1,16 +1,20 @@
-##############################################
+#############################################################################################################
+#Python version3.7.2 (tags/v3.7.2:9a3ffc0492, Dec 23 2018, 22:20:52) [MSC v.1916 32 bit (Intel)]
+#Pandas version0.24.2
+#Matplotlib version3.0.3
+# Jiahui Zhu
+# Date:5/15/2019
+#
 # from https://github.com/codebasics/py/tree/master/pandas/2_dataframe_basics
 # from https://github.com/codebasics/py/tree/master/pandas/1_intro
 # from https://blog.csdn.net/qq_30982323/article/details/82813990
-##############################################
 # 1) add df.set_value, know how to use defaultdict know how to use df.iterrows()
 # 2） pandas iat[]
 # originally DataFrame.set_value(index, col, value, takeable=False)
 # 3) pandas df.loc
-# from https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.get_dummies.html
-# cross_val_score usage
-# from https://www.cnblogs.com/zhaoxy/p/5054938.html
-
+# 4) from https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.get_dummies.html
+# 5) cross_val_score usage
+###############################################################################################################
 
 import pandas as pd
 
@@ -82,7 +86,7 @@ print('\n')
 
 print(df2.index)
 print('\n')
-df2.set_index('day',inplace=True)
+#df2.set_index('day',inplace=True)
 print(df2.loc['1/2/2017'])
 print('\n')
 
@@ -94,3 +98,41 @@ df2.set_index('event',inplace=True)
 print(df2)
 print('\n')
 df2.loc['Snow']
+
+#1) how to use set_value -- replace the designated position by a specific number
+df100 = pd.DataFrame({"A": [1, 5, 3, 4, 2],
+                   "B": [3, 2, 4, 3, 4],
+                   "C": [2, 2, 7, 3, 4],
+                   "D": [4, 3, 6, 12, 7]})
+df100.set_value(2, 'B', 100)
+print(df100)
+print('\n')
+###2) but for 1) set_value is deprecated right now please use iat or at
+## continued use example above
+df101 = pd.DataFrame({"A": [1, 5, 3, 4, 2],
+                   "B": [3, 2, 4, 3, 4],
+                   "C": [2, 2, 7, 3, 4],
+                   "D": [4, 3, 6, 12, 7]})
+df101.iat[2,1] = 100
+print(df101)
+print('\n')
+###3) about how to use df.loc
+print(df101.loc[2]) ## this line can show which position has 2
+print('\n')
+print(df101.loc[[1,2]])## display content in row 1 and row 2
+print('\n')
+print(df101.loc[1:2,'B']) ## display content in row 1 and row 2 and also in column B
+print('\n')
+print(df101.loc[df101['B']>10]) ## display the row which B is bigger than 10
+## and there are other instructions that won't be included in this file
+
+###1) what is defaultdict(int)
+#     what is iterrows()
+
+
+###4) pandas_get_dummies
+
+###5) cross_val_score usage
+
+###6)
+
