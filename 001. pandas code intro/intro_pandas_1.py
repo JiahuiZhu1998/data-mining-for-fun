@@ -8,6 +8,7 @@
 # from https://github.com/codebasics/py/tree/master/pandas/2_dataframe_basics
 # from https://github.com/codebasics/py/tree/master/pandas/1_intro
 # from https://blog.csdn.net/qq_30982323/article/details/82813990
+# from https://data-flair.training/blogs/python-defaultdict/
 # 1) add df.set_value, know how to use defaultdict know how to use df.iterrows()
 # 2） pandas iat[]
 # originally DataFrame.set_value(index, col, value, takeable=False)
@@ -17,6 +18,8 @@
 ###############################################################################################################
 
 import pandas as pd
+import numpy as np
+from collections import defaultdict
 
 df1 = pd.read_csv('nyc_weather.csv')
 print(df1)
@@ -130,9 +133,26 @@ print(df101.loc[df101['B']>10]) ## display the row which B is bigger than 10
 #     what is iterrows()
 
 
+
 ###4) pandas_get_dummies
+s = pd.Series(list('abca'))
+print('\n')
+print(pd.get_dummies(s)) ## create some identity matrix follow the sequence of abca
+s1 = ['a','b',np.nan]
+print('\n')
+print(pd.get_dummies(s1))
+print('\n')
+print(pd.get_dummies(s1,dummy_na=True))
+print('\n')
+df22 = pd.DataFrame({'A':['a','b','a'],'B':['b','a','c'],'C':[1,2,3]})
+print(pd.get_dummies(df22,prefix=['col1','col2']))
+print('\n')
+print(pd.get_dummies(pd.Series(list('abcaa'))))
+print('\n')
+print(pd.get_dummies(pd.Series(list('abcaa')),drop_first=True))
+print('\n')
+print(pd.get_dummies(pd.Series(list('abc')),dtype=float))
 
 ###5) cross_val_score usage
 
-###6)
 
