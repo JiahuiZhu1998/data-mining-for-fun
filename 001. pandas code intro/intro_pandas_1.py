@@ -130,8 +130,14 @@ print(df101.loc[df101['B']>10]) ## display the row which B is bigger than 10
 ## and there are other instructions that won't be included in this file
 
 ###1) what is defaultdict(int)
-#     what is iterrows()
-
+### normally, we use defaultdict to avoid syntax error
+b50 = defaultdict(int)
+c50 = defaultdict(list)
+print('\n')
+print(b50)
+print(c50)
+####     what is iterrows()
+#####           Iterate over DataFrame rows as (index, Series) pairs.
 
 
 ###4) pandas_get_dummies
@@ -144,8 +150,10 @@ print(pd.get_dummies(s1))
 print('\n')
 print(pd.get_dummies(s1,dummy_na=True))
 print('\n')
+####
 df22 = pd.DataFrame({'A':['a','b','a'],'B':['b','a','c'],'C':[1,2,3]})
 print(pd.get_dummies(df22,prefix=['col1','col2']))
+#### this two lines above are together, only have one output
 print('\n')
 print(pd.get_dummies(pd.Series(list('abcaa'))))
 print('\n')
@@ -154,5 +162,7 @@ print('\n')
 print(pd.get_dummies(pd.Series(list('abc')),dtype=float))
 
 ###5) cross_val_score usage
-
+###   this is about cross validation交叉验证
+# from https://blog.csdn.net/holybin/article/details/27185659
+#     cross_ val_score is a built-in function which test model of machine learning
 
