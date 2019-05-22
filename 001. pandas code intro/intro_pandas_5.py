@@ -5,10 +5,13 @@
 #  Name: Jiahui Zhu
 #  some questions need to comprehensive below:
 #  from https://nbviewer.jupyter.org/urls/bitbucket.org/hrojas/learn-pandas/raw/master/lessons/04%20-%20Lesson.ipynb
+#  from https://nbviewer.jupyter.org/urls/bitbucket.org/hrojas/learn-pandas/raw/master/lessons/05%20-%20Lesson.ipynb
 #  from https://blog.csdn.net/starter_____/article/details/79183733
 #  from https://blog.csdn.net/xueruixuan/article/details/81451690
 #  from https://blog.csdn.net/AnneQiQi/article/details/71057069
+#  from http://www.30daydo.com/article/257
 #
+#  get to know what .stack and .unstack mean in dataframe
 #####################################################################################################################
 import pandas as pd
 import sys
@@ -76,3 +79,23 @@ print(df1.head())
 print('\n')
 print(df1.tail())
 print('\n')
+#### lesson 5 starts over here
+d2 = {'one':[1,1],'two':[2,2]}
+i2 = ['a','b']## which means index
+##create dataframe
+df10 = pd.DataFrame(data=d2,index = i2)
+print(df10)
+print('\n')
+print(df10.index)
+print('\n')
+stack1 = df10.stack()
+print(stack1)
+print('\n')
+print(stack1.index)
+print('\n')
+unstack1 =df10.unstack()
+print(unstack1)
+print('\n')
+print(unstack1.index)
+print('\n')
+print(df10.T) ### which means transpose
