@@ -57,7 +57,7 @@ print('Done')
 print('\n')
 print('Part1 has ended!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
 ##grab data from excel
-location = r'C:/Users/garry/Documents/data-mining-for-fun/005. pandas code intro/Lesson3.xlsx'
+location = r'C:/Users/garry/Documents/data-mining-for-fun/001. pandas code intro/Lesson3.xlsx'
 ### read_excel(io, sheetname=0, header=0, skiprows=None, skip_footer=0, index_col=None,names=None, parse_cols=None, parse_dates=False,date_parser=None,na_values=None,thousands=None, convert_float=True, has_index_names=None, converters=None,dtype=None, true_values=None, false_values=None, engine=None, squeeze=False, **kwds)
 df2 = pd.read_excel(location,0,index_col='StatusDate')
 print('\n')
@@ -87,7 +87,7 @@ print(df2['State'].unique())
 print('\n')
 ### the figure which is (15,5) is not same as instruction
 df2['CustomerCount'].plot(figsize=(15,5))
-plt.show()
+#plt.show()
 #print(df2[df2['State']=='NY'])
 ### sortdf is not same as instruction's
 #DataFrame.sort_index(axis=0, level=None, ascending=True, inplace=False, kind='quicksort', na_position='last', sort_remaining=True, by=None)
@@ -120,7 +120,7 @@ Daily.loc['FL'].plot()
 Daily.loc['GA'].plot()
 Daily.loc['NY'].plot()
 Daily.loc['TX'].plot()
-plt.show()
+#plt.show()
 #### these four plots are not same as instructions
 Daily.loc['FL']['2012':].plot()
 Daily.loc['GA']['2012':].plot()
@@ -128,13 +128,15 @@ Daily.loc['NY']['2012':].plot()
 Daily.loc['TX']['2012':].plot()
 
 StateYearMonth = Daily.groupby([Daily.index.get_level_values(0),Daily.index.get_level_values(1).year,Daily.index.get_level_values(1).month])
+print(StateYearMonth)
+"""
 Daily['Lower'] = StateYearMonth['CustomerCount'].transform(lambda x:x.quantile(q=.25)-(1.5*x.quantile(q=.75)-x.quantile(q=.25)))
 Daily['Upper'] = StateYearMonth['CustomerCount'].transform(lambda x:x.quantile(q=.75)+(1.5*x.quantile(q=.75)-x.quantile(q=.25)))
 Daily['Outlier'] = (Daily['CustomerCount']<Daily['Lower']) | (Daily['CustomerCount']>Daily['Upper'])
 ###
 Daily=Daily[Daily['Outlier']==False]
 print(Daily.head())
-"""
+
 ###Combine all markets
 ALL =pd.DataFrame(Daily['CustomerCount'].groupby(Daily.index.get_level_values(1)).sum())
 ALL.columns = ['CustomerCount']

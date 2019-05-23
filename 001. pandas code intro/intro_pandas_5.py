@@ -6,15 +6,23 @@
 #  some questions need to comprehensive below:
 #  from https://nbviewer.jupyter.org/urls/bitbucket.org/hrojas/learn-pandas/raw/master/lessons/04%20-%20Lesson.ipynb
 #  from https://nbviewer.jupyter.org/urls/bitbucket.org/hrojas/learn-pandas/raw/master/lessons/05%20-%20Lesson.ipynb
-#  from https://blog.csdn.net/starter_____/article/details/79183733
-#  from https://blog.csdn.net/xueruixuan/article/details/81451690
-#  from https://blog.csdn.net/AnneQiQi/article/details/71057069
-#  from http://www.30daydo.com/article/257
+#  from https://blog.csdn.net/starter_____/article/details/79183733                1)
+#  from https://blog.csdn.net/xueruixuan/article/details/81451690                  2)
+#   from https://blog.csdn.net/youngbit007/article/details/54288603/                2)
+#  from https://blog.csdn.net/AnneQiQi/article/details/71057069                    3)
+#  from http://www.30daydo.com/article/257                                         4)
+#  from https://blog.csdn.net/cdpxc/article/details/81633661                       5)
+#  from https://blog.csdn.net/orangefly0214/article/details/81108649               6)
+#  from https://blog.csdn.net/zwhooo/article/details/79696558                      7)
+#  from https://www.jianshu.com/p/f0ed06cd5003                                     8)
+#  from https://blog.csdn.net/weixin_38168620/article/details/79596819             9)
+#  from https://blog.csdn.net/mr_hhh/article/details/79488445                      10)
 #
 #  get to know what .stack and .unstack mean in dataframe
 #####################################################################################################################
 import pandas as pd
 import sys
+import numpy as np
 print('Python version:'+sys.version)
 print('Pandas version:'+pd.__version__)
 
@@ -99,3 +107,118 @@ print('\n')
 print(unstack1.index)
 print('\n')
 print(df10.T) ### which means transpose
+print('\n')
+####1)################### how to use sort_value & sort_index
+print('Problem 1 shows below')
+df55 =pd.DataFrame(np.arange(12).reshape((4,3)),columns=['c','a','b'],index=['D','B','C','A'])
+print(df55)
+print('\n')
+print(df55.sort_index(axis=0)) ## descending by y axis
+print('\n')
+print(df55.sort_index(axis=1)) ## ascending by y axis
+print('\n')
+print(df55.sort_index(axis=1,ascending=False))
+print('\n') ## ascending controls horizontally sorting sequence
+####2)################### how to use groupby in pandas and save data to the dataframe
+print('Problem 2 shows below:')
+### compare df56 and df57
+df56 = pd.DataFrame({'a':[1,1,3,2],'b':[1,4,6,9],'c':[1,4,8,12]})
+print(df56)
+print('\n')
+df57 = pd.DataFrame({'a':[1,1,3,2],'b':[1,1,6,9],'c':[1,4,8,12]})
+print(df57)
+print('\n')
+g_df = df56['c'].groupby([df56['a'],df56['b']]).sum()
+print(g_df)
+print('\n')
+d_df = df57['c'].groupby([df57['a'],df57['b']]).sum()
+print(d_df)
+print('\n')
+end_df = pd.DataFrame(g_df)
+print(end_df)    ## save all data of g_df to end_df and arrange data by index and columns
+print('\n')
+end_df.reset_index(inplace=True)
+print(end_df)    ## back to the original condition
+print('\n')
+### the second website
+df58 = pd.DataFrame({'key1':list('aabba'),
+                  'key2': ['one','two','one','two','one'],
+                  'data1': np.random.randn(5),
+                  'data2': np.random.randn(5)})
+print(df58)
+print('\n')
+group58 = df58['data1'].groupby(df58['key1']).mean()
+print(group58)
+print('\n')
+####6)###################################how to use transform function in pandas
+print(df58['data1'].groupby(df58['key1']).transform(np.mean))
+print('\n')
+##########end of question 6 ----> it just fill content in each space(eg. np.mean)
+state58=np.array(['Ohio','California','California','Ohio','Ohio'])
+year58=np.array([2005,2005,2006,2005,2006])
+print(df58['data1'].groupby([state58,year58]).mean())
+print('\n')
+print(df58.groupby('key1').mean())
+print('\n')
+###
+for name,group in df58.groupby('key1'): ### for names in key1
+    print('\n')
+    print(name)
+    print('\n')
+    print(group)
+print('\n')
+###
+for(k1,k2),group in df58.groupby(['key1','key2']): ## show each row in each time
+    print('\n==k1,k2')
+    print('\n')
+    print(k1,k2)
+    print('\n==k3')
+    print('\n')
+    print(group)
+###### other content in the second website will not be included in this script
+
+####3)########################## usage of remove,del and pop
+print('\n')
+a59 = [1,2,3]
+a59.remove(2)
+print(a59)
+a59_2 = [1,2,3]
+del a59_2[1]
+print('\n')
+print(a59_2)
+print('\n')
+a59_3 = [1,2,3]
+print(a59_3.pop(2))
+print(a59_3)
+print('\n')
+####4)########################### dataframe reindex and reset_index usage of cancat
+df60 = pd.DataFrame({'A': [1, 2, 3, 4, 5], 'B': [10, 20, 30, 40, 50]})
+df60_2 = pd.DataFrame({'A': [6], 'B': [60]})
+print(df60)
+print('\n')
+print(df60_2)
+print('\n')
+df_x60 = [df60,df60_2]
+### concat is to combine two dataframe together
+result60 = pd.concat(df_x60) ## the index of result60 is not excellent
+print(result60)
+print('\n')
+result60_2 = result60.reset_index() ## assign new index but does not change sequence
+print(result60_2)
+print('\n')
+result60_3 = result60.reset_index(drop=True) ####assign new index and replace the original one
+print(result60_3)
+print('\n')
+result60_4 = result60.reindex(columns = ['A','C']) ## only show content in columns and also replace the sorted index
+print(result60_4)
+
+####5)###################################some simple python guidance
+
+
+####6)###################################how to use transform function in pandas
+### in questions above
+
+####7)###################################how to use map,apply,transform,agg
+
+####8)###################################
+
