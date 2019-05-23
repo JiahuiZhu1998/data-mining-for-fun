@@ -213,12 +213,38 @@ result60_4 = result60.reindex(columns = ['A','C']) ## only show content in colum
 print(result60_4)
 
 ####5)###################################some simple python guidance
-
+#df61
 
 ####6)###################################how to use transform function in pandas
 ### in questions above
 
 ####7)###################################how to use map,apply,transform,agg
 
-####8)###################################
+## one column assigned operation called map
+print('\n')
+df62 = pd.DataFrame({'A': [1, 2, 3, 4, 5], 'B': [10, 20, 30, 40, 50],'C':[0,0,0,0,0]})
+print(df62)
+print('\n')
+df62['C'] = df62['A'].map(lambda x: x**2)
+print(df62)
+## multuple column assigned opearation called apply
+print('\n')
+df62_2 = pd.DataFrame({'A': [1, 2, 3, 4, 5], 'B': [10, 20, 30, 40, 50],'C':[0,0,0,0,0]})
+print('\n')
+df62_2['C'] = df62_2.apply(lambda x: x['A'] + 2 * x['B'], axis=1) #C = 2*B+A
+print(df62_2)
+print('\n')
+## use groupby.transform
+df62_3 = pd.DataFrame({'A': [1, 2, 3, 4, 5], 'B': [10, 20, 30, 40, 50],'C':[0,0,0,0,0]})
+df62_3['C'] = df62_3.groupby('A')['B'].transform(lambda x: (x.sum() - x) / x.count()) #<--------------- error
+print(df62_3)
+## use agg transform
+df62_4 = pd.DataFrame({'A': [1, 2, 3, 4, 5], 'B': [10, 20, 30, 40, 50],'C':[0,0,0,0,0]})
+#df62_4['C'] = df62_4.groupby(['A']).agg({'A':{'A_mean': mean, 'col1_sum‘’: sum}, 'col2': {'col2_count': count}})
+##line above has error
+####8)################################### about sort_index() and sort_value() which have been covered
+pass;
+####9)################################### about how to use fillna
+
+####10)################################## details about how to use concat
 
