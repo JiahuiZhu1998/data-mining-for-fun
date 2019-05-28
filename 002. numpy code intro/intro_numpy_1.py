@@ -3,10 +3,12 @@
 # from https://www.jianshu.com/p/743b3bb340f6
 # from https://docs.scipy.org/doc/numpy/reference/arrays.indexing.html
 # from https://blog.csdn.net/u011475210/article/details/77770751
+# from https://blog.csdn.net/dongtingzhizi/article/details/12068205
 # This also include some matplotlib and scipy
 # 布尔索引 与 花式索引
 # how to use tail function in numpy****
 # how to use argsort()
+# how to use operator.itemgetter() and sorted
 
 ############################################################
 
@@ -19,7 +21,7 @@ import matplotlib.pyplot as plt
 from numpy import *
 import operator
 
-"""
+
 a = np.array([1,2,3])
 print(type(a))
 print(a.shape)
@@ -292,7 +294,7 @@ print(j.nonzero())
 print(arr5[i,j])
 print(arr5[i.nonzero(),j.nonzero()])
 print(arr5[[0,2],[0,1]]) ## the element (1,1) and(2,2) are 0 and 9 and these two elements consist a new list or an array
-"""
+
 ### use tile function in python
 arr555 = [1,2,3]
 arr556 = tile(arr555,3)
@@ -308,4 +310,15 @@ print(np.argsort(arr557_2,axis=0)) ##index by line
 print(np.argsort(arr557_2,axis=1)) ##index by column
 print(np.argsort(arr557_2))
 print(np.argsort(-arr557_2))
+
+### use operator.itemgetter()  arr557 = [1,2,3]
+print('\n')
+get558 = operator.itemgetter(1)
+print(get558(arr557))
+get558_2 = operator.itemgetter([0,1])
+print(get558_2(arr557))
+### use sorted function in detail
+students559 = [('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10)]
+print(sorted(students559, key=lambda student : student[2])) ## sort 15,12,10
+###
 
