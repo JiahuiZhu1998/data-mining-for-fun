@@ -9,6 +9,7 @@
 # how to use tail function in numpy****
 # how to use argsort()
 # how to use operator.itemgetter() and sorted
+# how to use .get function in dictionary
 
 ############################################################
 
