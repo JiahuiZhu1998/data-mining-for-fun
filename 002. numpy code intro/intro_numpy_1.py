@@ -2,8 +2,12 @@
 # from http://cs231n.github.io/python-numpy-tutorial/
 # from https://www.jianshu.com/p/743b3bb340f6
 # from https://docs.scipy.org/doc/numpy/reference/arrays.indexing.html
+# from https://blog.csdn.net/u011475210/article/details/77770751
 # This also include some matplotlib and scipy
 # 布尔索引 与 花式索引
+# how to use tail function in numpy****
+# how to use argsort()
+
 ############################################################
 
 import numpy as np
@@ -12,8 +16,10 @@ import sys
 from scipy.misc import imread, imsave, imresize
 import imageio
 import matplotlib.pyplot as plt
+from numpy import *
+import operator
 
-
+"""
 a = np.array([1,2,3])
 print(type(a))
 print(a.shape)
@@ -286,4 +292,20 @@ print(j.nonzero())
 print(arr5[i,j])
 print(arr5[i.nonzero(),j.nonzero()])
 print(arr5[[0,2],[0,1]]) ## the element (1,1) and(2,2) are 0 and 9 and these two elements consist a new list or an array
+"""
+### use tile function in python
+arr555 = [1,2,3]
+arr556 = tile(arr555,3)
+print(arr556)
+print('\n')
+
+### use argsort() function in numpy
+arr557 = np.array([1,2,3])
+print(np.argsort(arr557))
+print('\n')
+arr557_2 = np.array([[2,3,5],[5,7,9]])
+print(np.argsort(arr557_2,axis=0)) ##index by line
+print(np.argsort(arr557_2,axis=1)) ##index by column
+print(np.argsort(arr557_2))
+print(np.argsort(-arr557_2))
 
