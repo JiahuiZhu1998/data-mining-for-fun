@@ -27,8 +27,9 @@ def classify0(intX,dataSet,labels,k):
         classCount[voteIlabel] = classCount.get(voteIlabel,0) + 1
         #print(classCount[voteIlabel])
         #print(classCount)
-    print(classCount.items())
+    #print(classCount.items())
     sortedClassCount = sorted(classCount.items(),key=operator.itemgetter(1),reverse=True)
+    #print(sortedClassCount[0][0])
     return sortedClassCount[0][0]
 
 def file2matrix(filename):
@@ -47,28 +48,34 @@ def file2matrix(filename):
         index+=1
     return returnMat,classLabelVector
 
-def autoNorm(dataSet):
+def autoNorm(dataSet):#数据归一化function newData = (data-min)/(max-min)
     minVals = dataSet.min(0)
     maxVals = dataSet.max(0)
     ranges = maxVals -minVals
     normDataSet = zeros(shape(dataSet))
-    m = dataSet.shape[0]
-    normDataSet = dataSet - tile(minVals,(m,1))
+    #print(dataSet.shape[0])
+    m = dataSet.shape[0]#number of dataSet
+    #print(tile(minVals,(m,1)))
+    normDataSet = dataSet - tile(minVals,(m,1))     ### copy minVals to 1000*3(1000 times)
+    #print(tile(ranges,(m,1)))
     normDataSet = normDataSet / tile(ranges,(m,1))
     return normDataSet,ranges,minVals
 
-def datingClassTest():
+def datingClassTest(): ##test algorithm
     hoRatio = 0.10
     datingDataMat,datingLabels = file2matrix('datingTestSet.txt')
     normMat, ranges, minVals = autoNorm(datingDataMat)
     m = normMat.shape[0]
+    #print(m)
     numTestVecs = int(m*hoRatio)
+    #print(numTestVecs)
     errorCount = 0.0
     for i in range(numTestVecs):
         classifierResult = classify0(normMat[i,:],normMat[numTestVecs:m,:],datingLabels[numTestVecs:m],3)
         print("the classifier came back with: %s, the real answer is: %s"%(classifierResult, datingLabels[i]))
         if (classifierResult != datingLabels[i]): errorCount += 1.0
     print("the total error rate is: %f" % (errorCount/float(numTestVecs)))
+
 def classifyPerson():
     resultList = ['not at all', 'in small doses', 'in large doses']
     percentTats = float(input("percentage of time spent playing video games?"))
