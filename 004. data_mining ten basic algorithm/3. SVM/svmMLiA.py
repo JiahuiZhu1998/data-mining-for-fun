@@ -133,13 +133,13 @@ def innerL(i, oS):
         else:
             L = max(0, oS.alphas[j] + oS.alphas[i] - oS.C)
             H = min(oS.C, oS.alphas[j] + oS.alphas[i])
-        if L==H: print "L==H"; return 0
+        if L==H: print("L==H"); return 0
         eta = 2.0 * oS.K[i,j] - oS.K[i,i] - oS.K[j,j] #changed for kernel
-        if eta >= 0: print "eta>=0"; return 0
+        if eta >= 0: print("eta>=0"); return 0
         oS.alphas[j] -= oS.labelMat[j]*(Ei - Ej)/eta
         oS.alphas[j] = clipAlpha(oS.alphas[j],H,L)
         updateEk(oS, j) #added this for the Ecache
-        if (abs(oS.alphas[j] - alphaJold) < 0.00001): print "j not moving enough"; return 0
+        if (abs(oS.alphas[j] - alphaJold) < 0.00001): print("j not moving enough"); return 0
         oS.alphas[i] += oS.labelMat[j]*oS.labelMat[i]*(alphaJold - oS.alphas[j])#update i by the same amount as j
         updateEk(oS, i) #added this for the Ecache                    #the update is in the oppostie direction
         b1 = oS.b - Ei- oS.labelMat[i]*(oS.alphas[i]-alphaIold)*oS.K[i,i] - oS.labelMat[j]*(oS.alphas[j]-alphaJold)*oS.K[i,j]
@@ -194,7 +194,7 @@ def testRbf(k1=1.3):
         kernelEval = kernelTrans(sVs,datMat[i,:],('rbf', k1))
         predict=kernelEval.T * multiply(labelSV,alphas[svInd]) + b
         if sign(predict)!=sign(labelArr[i]): errorCount += 1
-    print "the training error rate is: %f" % (float(errorCount)/m)
+    print("the training error rate is: %f" % (float(errorCount)/m))
     dataArr,labelArr = loadDataSet('testSetRBF2.txt')
     errorCount = 0
     datMat=mat(dataArr); labelMat = mat(labelArr).transpose()
@@ -307,13 +307,13 @@ def innerLK(i, oS):
         else:
             L = max(0, oS.alphas[j] + oS.alphas[i] - oS.C)
             H = min(oS.C, oS.alphas[j] + oS.alphas[i])
-        if L==H: print "L==H"; return 0
+        if L==H: print("L==H"); return 0
         eta = 2.0 * oS.X[i,:]*oS.X[j,:].T - oS.X[i,:]*oS.X[i,:].T - oS.X[j,:]*oS.X[j,:].T
-        if eta >= 0: print "eta>=0"; return 0
+        if eta >= 0: print("eta>=0"); return 0
         oS.alphas[j] -= oS.labelMat[j]*(Ei - Ej)/eta
         oS.alphas[j] = clipAlpha(oS.alphas[j],H,L)
         updateEk(oS, j) #added this for the Ecache
-        if (abs(oS.alphas[j] - alphaJold) < 0.00001): print "j not moving enough"; return 0
+        if (abs(oS.alphas[j] - alphaJold) < 0.00001): print("j not moving enough"); return 0
         oS.alphas[i] += oS.labelMat[j]*oS.labelMat[i]*(alphaJold - oS.alphas[j])#update i by the same amount as j
         updateEk(oS, i) #added this for the Ecache                    #the update is in the oppostie direction
         b1 = oS.b - Ei- oS.labelMat[i]*(oS.alphas[i]-alphaIold)*oS.X[i,:]*oS.X[i,:].T - oS.labelMat[j]*(oS.alphas[j]-alphaJold)*oS.X[i,:]*oS.X[j,:].T

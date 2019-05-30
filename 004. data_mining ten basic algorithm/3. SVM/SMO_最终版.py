@@ -136,7 +136,7 @@ def calcWs(alphas, dataArr, classLabels):
         w += multiply(alphas[i] * labelMat[i], X[i, :].T)
     return w
 
-if __name__ == '__main__':
+#if __name__ == '__main__':
 
 
 
