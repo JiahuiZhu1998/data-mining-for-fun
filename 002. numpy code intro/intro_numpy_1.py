@@ -10,7 +10,9 @@
 # how to use argsort()
 # how to use operator.itemgetter() and sorted
 # how to use .get function in dictionary
-
+# how to use mat in numpy, Show to use multiply() in numpy
+# from https://blog.csdn.net/zenghaitao0128/article/details/78715140
+# from https://blog.csdn.net/leo_sheng/article/details/80741789
 ############################################################
 
 import numpy as np

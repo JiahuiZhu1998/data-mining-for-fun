@@ -33,7 +33,7 @@ def smoSimple(dataMatIn, classLabels, C, toler, maxIter):
     dataMatrix = mat(dataMatIn); labelMat = mat(classLabels).transpose()
     b = 0; m,n = shape(dataMatrix)
     alphas = mat(zeros((m,1)))
-    iter = 0
+    iter = 0 ##maxIter can be controlled by user
     while (iter < maxIter):
         alphaPairsChanged = 0
         for i in range(m):
@@ -70,13 +70,15 @@ def smoSimple(dataMatIn, classLabels, C, toler, maxIter):
         print("iteration number: %d" % iter)
     return b,alphas
 
-
-
 if __name__ == '__main__':
     dataArr,labelArr = loadDataSet('testSet.txt')
     # all will be -1 or +1
     #print(labelArr)
     b1,alphas1 =smoSimple(dataArr, labelArr,0.6,0.001,40)
-    print("b:%s"%b1)
-    print('\n')
-    print("alpha:%s"%alphas1[alphas1>0])
+    # print("b:%s"%b1)
+    # print('\n')
+    # print("alpha:%s"%alphas1[alphas1>0])
+    ## about support vector
+    # print(shape[alphas1[alphas1]])## number of support vectors
+    # for i in range(100):
+    #     if alphas1[i]>0.0: print(dataArr[i],labelArr[i])
