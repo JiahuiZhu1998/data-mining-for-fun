@@ -1,0 +1,19 @@
+Name: Jiahui Zhu
+Date: 6/2/2019
+Description: The concept of KNN,SVM and K-means. 
+
+KNN Algorithm:
+      First,we assume that point A belongs to Category F1 and we have one thousand points in dataset. Then we start to calculate Euclid's 
+      distance between every point and point A. After calculation, we get 1000 numbers which represent distance from each point to point A.
+      Next, we sort them by ascending order(which is from smallest number to the largest number).After sorting, we will pick first point 
+      to the kth point(k is determined by programmer).When we pick k points, we can get frequency each category appear(assume each point
+      has been assigned to a category).Then we can find a category which appears most in these k points and treat these k points as this
+      category.
+      
+SVM Algorithm:
+      SVM is a big topic which contains linear model and non-linear model. the main idea of SVM is to create a space divider u which u 
+      can be represented by u=wx+b(w is 
+       
+K-Means Algorithm:
+       
+      
