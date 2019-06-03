@@ -13,7 +13,10 @@ KNN Algorithm:
 SVM Algorithm:
       SVM is a big topic which contains linear model and non-linear model. the main idea of SVM is to create a space divider u which u 
       can be represented by u=wx+b(w is orthogonal vector of each plane and b is real number which offset this formula). u only has two
-      values which is -1 and +1. -1 and +1 represent positive side and negative side respectively.
+      values which is -1 and +1. -1 and +1 represent positive side and negative side respectively. And the hyperplane which can divide
+      dataset to two groups (or a line in linear model), we consider u=0 when it is on the hyperplane. After knowing these rules, we start
+      to calculate langrange multiplier which we can get from input vector x and output vector u. and update multiplier time by time until
+      we get the best fit line which can divide dataset to two groups.
        
 
 K-Means Algorithm:
