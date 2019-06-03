@@ -12,7 +12,8 @@ KNN Algorithm:
       
 SVM Algorithm:
       SVM is a big topic which contains linear model and non-linear model. the main idea of SVM is to create a space divider u which u 
-      can be represented by u=wx+b(w is 
+      can be represented by u=wx+b(w is orthogonal vector of each plane and b is real number which offset this formula). u only has two
+      values which is -1 and +1. -1 and +1 represent positive side and negative side respectively.
        
 
 K-Means Algorithm:
