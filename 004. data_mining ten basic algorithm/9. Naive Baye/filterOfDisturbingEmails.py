@@ -37,7 +37,7 @@ def spamTest():
         randIndex = int(random.uniform(0, len(trainingSet)))
         testSet.append(trainingSet[randIndex])
         del (trainingSet[randIndex])
-    trainMat = []
+    trainMat = [];
     trainClasses = []
     for docIndex in trainingSet:  # train the classifier (get probs) trainNB0
         trainMat.append(bagOfWords2VecMN(vocabList, docList[docIndex]))
@@ -46,7 +46,6 @@ def spamTest():
     errorCount = 0
     for docIndex in testSet:  # classify the remaining items
         wordVector = bagOfWords2VecMN(vocabList, docList[docIndex])
-        print(classifyNB(array(wordVector),p0V,p1V,pSpam))
         if classifyNB(array(wordVector), p0V, p1V, pSpam) != classList[docIndex]:
             errorCount += 1
             print("classification error", docList[docIndex])
