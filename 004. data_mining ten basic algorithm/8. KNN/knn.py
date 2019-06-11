@@ -63,7 +63,7 @@ def autoNorm(dataSet):#数据归一化function newData = (data-min)/(max-min)
 
 def datingClassTest(): ##test algorithm
     hoRatio = 0.10
-    datingDataMat,datingLabels = file2matrix('datingTestSet.txt')
+    datingDataMat,datingLabels = file2matrix('file from book/datingTestSet.txt')
     normMat, ranges, minVals = autoNorm(datingDataMat)
     m = normMat.shape[0]
     #print(m)
@@ -126,7 +126,7 @@ if __name__ == '__main__':
     labels1 = ['A','A','B','B']
     classify0([0,0],group1,labels1,3)
     ######################
-    datingDataMat,datingLabels = file2matrix('datingTestSet2.txt')
+    datingDataMat,datingLabels = file2matrix('file from book/datingTestSet2.txt')
     ###################### use matplotlib below
     # import matplotlib
     # import matplotlib.pyplot as plt

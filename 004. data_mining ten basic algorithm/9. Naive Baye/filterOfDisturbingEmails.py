@@ -5,6 +5,7 @@ Date: 6/4/2019
 sometimes running this file you will get error rate = 0.0, sometimes you get error rate = 0.1
 '''
 import re
+import sys
 from numpy import *
 from bayes_JiahuiZhu import createVocabList
 from bayes_JiahuiZhu import bagOfWords2VecMN
