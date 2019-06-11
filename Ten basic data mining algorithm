@@ -24,5 +24,26 @@ K-Means Algorithm:
       each centroid.After that, we assign these points to cluster which has shortest distance from them(each centroid represent center
       of each cluster).Then, calculate avearge value of all points in each cluster. set the average value as new centroid of cluster,
       and continue to do same things above until no point change to another cluster.
+      
+CART Algorithm:
+      
+      
+      
+Adaboost Algorithm:
+
+
+Naive Bayes Algorithm:
+
+
+Logistic Regression:
+
+
+Linear Regression:
+
+
+Apriori Algorithm:
+
+
+FP-Growth 
        
       
