@@ -4,6 +4,7 @@ Date: 6/11/2019
 '''
 '''
 Since the website has been removed, we cannot run this example
+Syntax errors are contained in this file
 '''
 from time import sleep
 from numpy import *
