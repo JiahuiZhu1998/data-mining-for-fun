@@ -17,6 +17,7 @@ def loadDataSet(fileName):      #general function to parse tab -delimited floats
             lineArr.append(float(curLine[i]))
         dataMat.append(lineArr)
         labelMat.append(float(curLine[-1]))
+    #print(dataMat);print(labelMat)
     return dataMat,labelMat
 
 def standRegres(xArr,yArr):
@@ -25,7 +26,10 @@ def standRegres(xArr,yArr):
     if linalg.det(xTx) == 0.0:
         print("This matrix is singular, cannot do inverse")
         return
+    # print(xTx)
+    # print(xTx.I)
     ws = xTx.I * (xMat.T*yMat)
+    #print(ws)
     return ws
 
 if __name__=='__main__':

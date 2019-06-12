@@ -15,9 +15,9 @@ def classifyVector(inX, weights):
 
 
 def colicTest():
-    frTrain = open('file from book/horseColicTraining.txt');
+    frTrain = open('file from book/horseColicTraining.txt')
     frTest = open('file from book/horseColicTest.txt')
-    trainingSet = [];
+    trainingSet = []
     trainingLabels = []
     for line in frTrain.readlines():
         currLine = line.strip().split('\t')
@@ -27,7 +27,7 @@ def colicTest():
         trainingSet.append(lineArr)
         trainingLabels.append(float(currLine[21]))
     trainWeights = stocGradAscent1(array(trainingSet), trainingLabels, 1000)
-    errorCount = 0;
+    errorCount = 0
     numTestVec = 0.0
     for line in frTest.readlines():
         numTestVec += 1.0
