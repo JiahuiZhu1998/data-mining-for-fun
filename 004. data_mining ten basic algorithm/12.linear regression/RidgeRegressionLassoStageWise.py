@@ -17,7 +17,7 @@ def ridgeRegres(xMat, yMat, lam=0.2):
 
 
 def ridgeTest(xArr, yArr):
-    xMat = mat(xArr);
+    xMat = mat(xArr)
     yMat = mat(yArr).T
     yMean = mean(yMat, 0)
     yMat = yMat - yMean  # to eliminate X0 take mean off of Y
@@ -42,19 +42,19 @@ def regularize(xMat):  # regularize by columns
 
 
 def stageWise(xArr, yArr, eps=0.01, numIt=100):
-    xMat = mat(xArr);
+    xMat = mat(xArr)
     yMat = mat(yArr).T
     yMean = mean(yMat, 0)
     yMat = yMat - yMean  # can also regularize ys but will get smaller coef
     xMat = regularize(xMat)
     m, n = shape(xMat)
     # returnMat = zeros((numIt,n)) #testing code remove
-    ws = zeros((n, 1));
-    wsTest = ws.copy();
+    ws = zeros((n, 1))
+    wsTest = ws.copy()
     wsMax = ws.copy()
     for i in range(numIt):
         print(ws.T)
-        lowestError = inf;
+        lowestError = inf
         for j in range(n):
             for sign in [-1, 1]:
                 wsTest = ws.copy()
@@ -106,4 +106,14 @@ if __name__=='__main__':
     ax.plot(ridgeWeights)
     plt.show()
     ######################
-
+    stageWise(abX, abY, 0.01, 200)
+    # print(stageWise(abX,abY,0.01,200))
+    # print(stageWise(abX, abY, 0.001, 5000))
+    ######################
+    xMat5 = mat(abX)
+    yMat5 = mat(abY).T
+    xMat6 = regularize(xMat5)
+    yM = mean(yMat5,0)
+    yMat6 = yMat5-yM
+    weights6 = standRegres(xMat6,yMat6.T)
+    #print(weights6.T)

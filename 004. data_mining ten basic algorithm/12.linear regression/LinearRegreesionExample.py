@@ -2,19 +2,22 @@
 Name: Jiahui Zhu
 Date: 6/11/2019
 '''
+'''
+Since the website has been removed, we cannot run this example
+'''
 from time import sleep
 from numpy import *
 import json
-import urllib2
+from urllib.request import *
 from RegressionWeightedByPart import *
-from RidgeRegression&Lasso&StageWise import *
+from RidgeRegressionLassoStageWise import *
 
 def searchForSet(retX, retY, setNum, yr, numPce, origPrc):
     sleep(10)
     myAPIstr = 'AIzaSyD2cR2KFyx12hXu6PFU-wrWot3NXvko8vY'
     searchURL = 'https://www.googleapis.com/shopping/search/v1/public/products?key=%s&country=US&q=lego+%d&alt=json' % (
     myAPIstr, setNum)
-    pg = urllib2.urlopen(searchURL)
+    pg =urlopen(searchURL)
     retDict = json.loads(pg.read())
     for i in range(len(retDict['items'])):
         try:
@@ -83,3 +86,7 @@ def crossValidation(xArr, yArr, numVal=10):
     unReg = bestWeights / varX
     print("the best model from Ridge Regression is:\n", unReg)
     print("with constant term: ", -1 * sum(multiply(meanX, unReg)) + mean(yMat))
+
+if __name__=='__main__':
+    lgX = [];lgY=[]
+    print(setDataCollect(lgX,lgY))
