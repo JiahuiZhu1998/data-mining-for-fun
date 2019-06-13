@@ -3,6 +3,7 @@ Name: Jiahui Zhu
 Date: 6/12/2019
 '''
 from numpy import *
+from AprioriSimple import *
 from AprioriComplete import *
 
 def generateRules(L, supportData, minConf=0.7):  # supportData is a dict coming from scanD
@@ -22,8 +23,7 @@ def calcConf(freqSet, H, supportData, brl, minConf=0.7):
     for conseq in H:
         conf = supportData[freqSet] / supportData[freqSet - conseq]  # calc confidence
         if conf >= minConf:
-            print
-            freqSet - conseq, '-->', conseq, 'conf:', conf
+            print(freqSet - conseq, '-->', conseq, 'conf:', conf)
             brl.append((freqSet - conseq, conseq, conf))
             prunedH.append(conseq)
     return prunedH
@@ -39,8 +39,8 @@ def rulesFromConseq(freqSet, H, supportData, brl, minConf=0.7):
 
 if __name__ =='__main__':
     dataSet = loadDataSet()
-    L1.suppData=apriori(dataSet,minSupport=0.5)
-    rules=generateRules(L,suppData,minConf=0.7)
-    print(rules)
+    L1,suppData=apriori(dataSet,minSupport=0.5)
+    rules=generateRules(L1,suppData,minConf=0.7)
+    print(rules);print('\n')
     rules1=generateRules(L1,suppData,minConf=0.5)
     print(rules1)
