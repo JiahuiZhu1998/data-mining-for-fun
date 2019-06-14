@@ -22,7 +22,7 @@ class treeNode:
         self.count += numOccur
         
     def disp(self, ind=1):
-        print '  '*ind, self.name, ' ', self.count
+        print('  '*ind, self.name, ' ', self.count)
         for child in self.children.values():
             child.disp(ind+1)
 
@@ -116,7 +116,7 @@ def createInitSet(dataSet):
         retDict[frozenset(trans)] = 1
     return retDict
 
-import twitter
+#import twitter
 from time import sleep
 import re
 
@@ -130,15 +130,15 @@ def getLotsOfTweets(searchStr):
     CONSUMER_SECRET = ''
     ACCESS_TOKEN_KEY = ''
     ACCESS_TOKEN_SECRET = ''
-    api = twitter.Api(consumer_key=CONSUMER_KEY, consumer_secret=CONSUMER_SECRET,
-                      access_token_key=ACCESS_TOKEN_KEY, 
-                      access_token_secret=ACCESS_TOKEN_SECRET)
+    # api = twitter.Api(consumer_key=CONSUMER_KEY, consumer_secret=CONSUMER_SECRET,
+    #                   access_token_key=ACCESS_TOKEN_KEY,
+    #                   access_token_secret=ACCESS_TOKEN_SECRET)
     #you can get 1500 results 15 pages * 100 per page
     resultsPages = []
     for i in range(1,15):
-        print "fetching page %d" % i
-        searchResults = api.GetSearch(searchStr, per_page=100, page=i)
-        resultsPages.append(searchResults)
+        print("fetching page %d" % i)
+        #searchResults = api.GetSearch(searchStr, per_page=100, page=i)
+        #resultsPages.append(searchResults)
         sleep(6)
     return resultsPages
 
