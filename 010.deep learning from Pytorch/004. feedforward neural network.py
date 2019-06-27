@@ -5,7 +5,7 @@ import torchvision.transforms as transforms
 
 # configuration
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
+#print(device)
 #Hyper-parameters
 input_size = 784
 hidden_size = 500
@@ -15,6 +15,7 @@ batch_size = 100
 learning_rate = 0.001
 
 #MNIST dataset
+#print(transforms.ToTensor())
 train_dataset = torchvision.datasets.MNIST(root='../../data',train=True ,transform=transforms.ToTensor(),download=True)
 test_dataset = torchvision.datasets.MNIST(root='../../data',train=False,transform=transforms.ToTensor())
 #Data loader
